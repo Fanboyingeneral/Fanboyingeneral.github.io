@@ -21,12 +21,12 @@
     <style>
       :root {
         --bg-primary: #ffffff;
-        --bg-secondary: #f9f9f9;
+        --bg-secondary: #f0fdf4;
         --text-primary: #333;
         --text-secondary: #666;
-        --border-color: #e0e0e0;
-        --link-color: #0066cc;
-        --badge-bg: #0066cc;
+        --border-color: #d1fae5;
+        --link-color: #059669;
+        --badge-bg: #059669;
         --success-color: #28a745;
         --warning-color: #ffc107;
         --info-color: #17a2b8;
@@ -36,9 +36,9 @@
         --bg-secondary: #2a2a2a;
         --text-primary: #e0e0e0;
         --text-secondary: #b0b0b0;
-        --border-color: #404040;
-        --link-color: #4d9fff;
-        --badge-bg: #4d9fff;
+        --border-color: #1f5f47;
+        --link-color: #10b981;
+        --badge-bg: #10b981;
       }
 
       * {
@@ -148,6 +148,85 @@
       }
 
       /* Profile Section */
+      /* Text Pop Up Top Animation */
+      @-webkit-keyframes text-pop-up-top {
+        0% {
+          -webkit-transform: translateY(0);
+                  transform: translateY(0);
+          -webkit-transform-origin: 50% 50%;
+                  transform-origin: 50% 50%;
+          text-shadow: none;
+        }
+        100% {
+          -webkit-transform: translateY(-20px);
+                  transform: translateY(-20px);
+          -webkit-transform-origin: 50% 50%;
+                  transform-origin: 50% 50%;
+          text-shadow: 0 1px 0 #cccccc, 0 2px 0 #cccccc, 0 3px 0 #cccccc, 0 4px 0 #cccccc, 0 5px 0 #cccccc, 0 6px 0 #cccccc, 0 7px 0 #cccccc, 0 8px 0 #cccccc, 0 9px 0 #cccccc, 0 50px 30px rgba(0, 0, 0, 0.3);
+        }
+      }
+
+      @keyframes text-pop-up-top {
+        0% {
+          -webkit-transform: translateY(0);
+                  transform: translateY(0);
+          -webkit-transform-origin: 50% 50%;
+                  transform-origin: 50% 50%;
+          text-shadow: none;
+        }
+        100% {
+          -webkit-transform: translateY(-20px);
+                  transform: translateY(-20px);
+          -webkit-transform-origin: 50% 50%;
+                  transform-origin: 50% 50%;
+          text-shadow: 0 1px 0 #cccccc, 0 2px 0 #cccccc, 0 3px 0 #cccccc, 0 4px 0 #cccccc, 0 5px 0 #cccccc, 0 6px 0 #cccccc, 0 7px 0 #cccccc, 0 8px 0 #cccccc, 0 9px 0 #cccccc, 0 50px 30px rgba(0, 0, 0, 0.3);
+        }
+      }
+
+      /* Dark Mode Text Pop Up Top Animation */
+      @-webkit-keyframes text-pop-up-top-dark {
+        0% {
+          -webkit-transform: translateY(0);
+                  transform: translateY(0);
+          -webkit-transform-origin: 50% 50%;
+                  transform-origin: 50% 50%;
+          text-shadow: none;
+        }
+        100% {
+          -webkit-transform: translateY(-20px);
+                  transform: translateY(-20px);
+          -webkit-transform-origin: 50% 50%;
+                  transform-origin: 50% 50%;
+          text-shadow: 0 1px 0 #555555, 0 2px 0 #555555, 0 3px 0 #555555, 0 4px 0 #555555, 0 5px 0 #555555, 0 6px 0 #555555, 0 7px 0 #555555, 0 8px 0 #555555, 0 9px 0 #555555, 0 50px 30px rgba(0, 0, 0, 0.4);
+        }
+      }
+
+      @keyframes text-pop-up-top-dark {
+        0% {
+          -webkit-transform: translateY(0);
+                  transform: translateY(0);
+          -webkit-transform-origin: 50% 50%;
+                  transform-origin: 50% 50%;
+          text-shadow: none;
+        }
+        100% {
+          -webkit-transform: translateY(-20px);
+                  transform: translateY(-20px);
+          -webkit-transform-origin: 50% 50%;
+                  transform-origin: 50% 50%;
+          text-shadow: 0 1px 0 #555555, 0 2px 0 #555555, 0 3px 0 #555555, 0 4px 0 #555555, 0 5px 0 #555555, 0 6px 0 #555555, 0 7px 0 #555555, 0 8px 0 #555555, 0 9px 0 #555555, 0 50px 30px rgba(0, 0, 0, 0.4);
+        }
+      }
+      .text-pop-up-top {
+        -webkit-animation: text-pop-up-top 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+        animation: text-pop-up-top 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+      }
+
+      [data-theme="dark"] .text-pop-up-top {
+        -webkit-animation: text-pop-up-top-dark 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+        animation: text-pop-up-top-dark 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+      }
+
       .profile-img {
         width: 280px;
         height: 380px;
@@ -606,6 +685,35 @@
           display: none;
         }
       }
+
+      /* Override Bootstrap text-primary to use theme colors */
+      .text-primary {
+        color: var(--link-color) !important;
+      }
+
+      /* Override Bootstrap btn-primary styles */
+      .btn-primary {
+        background-color: var(--link-color) !important;
+        border-color: var(--link-color) !important;
+      }
+
+      .btn-primary:hover {
+        background-color: var(--link-color) !important;
+        border-color: var(--link-color) !important;
+        opacity: 0.85;
+      }
+
+      /* Override Bootstrap outline button colors */
+      .btn-outline-primary {
+        color: var(--link-color) !important;
+        border-color: var(--link-color) !important;
+      }
+
+      .btn-outline-primary:hover {
+        background-color: var(--link-color) !important;
+        border-color: var(--link-color) !important;
+        color: white !important;
+      }
     </style>
   </head>
   <body>
@@ -651,7 +759,7 @@
     <!-- Header / About Section -->
     <div class="about-container" id="about">
       <div class="about-info">
-        <h1 class="fw-bold mb-2" style="font-size: 2.5rem">
+        <h1 class="fw-bold mb-2 text-pop-up-top" style="font-size: 2.5rem">
           Sakif Naieb Raiyan
         </h1>
         <h3 class="text-primary fw-bold mb-3">Aspiring Undergraduate Researcher</h3>
