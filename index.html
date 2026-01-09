@@ -1,0 +1,1484 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- CHANGE THIS: Update the page title with your name -->
+    <title>Sakif Naieb Raiyan - Undergraduate Portfolio</title>
+
+    <!-- Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <style>
+      :root {
+        --bg-primary: #ffffff;
+        --bg-secondary: #f9f9f9;
+        --text-primary: #333;
+        --text-secondary: #666;
+        --border-color: #e0e0e0;
+        --link-color: #0066cc;
+        --badge-bg: #0066cc;
+        --success-color: #28a745;
+        --warning-color: #ffc107;
+        --info-color: #17a2b8;
+      }
+      [data-theme="dark"] {
+        --bg-primary: #1a1a1a;
+        --bg-secondary: #2a2a2a;
+        --text-primary: #e0e0e0;
+        --text-secondary: #b0b0b0;
+        --border-color: #404040;
+        --link-color: #4d9fff;
+        --badge-bg: #4d9fff;
+      }
+
+      * {
+        transition: background-color 0.3s, color 0.3s;
+      }
+
+      /* Smooth scrolling with navbar offset */
+      html {
+        scroll-behavior: smooth;
+      }
+
+      [id] {
+        scroll-margin-top: 120px;
+      }
+
+      body {
+        background: var(--bg-primary);
+        color: var(--text-primary);
+        max-width: 1100px;
+        margin: auto;
+        padding-top: 110px;
+        font-family: "Segoe UI", "Helvetica Neue", sans-serif;
+        padding-left: 30px;
+        padding-right: 30px;
+        line-height: 1.6;
+      }
+
+      /* Navbar Styles */
+      .navbar-custom {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        backdrop-filter: blur(15px);
+        background: rgba(255, 255, 255, 0.95);
+        z-index: 998;
+        border-bottom: 1px solid var(--border-color);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      }
+
+      [data-theme="dark"] .navbar-custom {
+        background: rgba(26, 26, 26, 0.95);
+      }
+
+      .navbar-custom a {
+        color: var(--text-primary);
+        margin-right: 20px;
+        font-weight: 500;
+        text-decoration: none;
+        transition: all 0.3s;
+        font-size: 0.95rem;
+      }
+
+      .navbar-custom a:hover {
+        color: var(--link-color);
+        border-bottom: 2px solid var(--link-color);
+        padding-bottom: 2px;
+      }
+
+      /* Mobile Menu */
+      .mobile-menu {
+        position: fixed;
+        top: 0;
+        right: -280px;
+        width: 280px;
+        height: 100%;
+        background: var(--bg-secondary);
+        border-left: 2px solid var(--border-color);
+        padding: 70px 20px;
+        z-index: 999;
+        transition: right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        overflow-y: auto;
+      }
+
+      .mobile-menu.show {
+        right: 0;
+      }
+
+      .mobile-menu a {
+        display: block;
+        margin: 15px 0;
+        color: var(--text-primary);
+        text-decoration: none;
+        font-size: 1.05rem;
+        font-weight: 500;
+        transition: all 0.3s;
+      }
+
+      .mobile-menu a:hover {
+        color: var(--link-color);
+        padding-left: 10px;
+      }
+
+      .close-menu {
+        position: absolute;
+        top: 15px;
+        right: 20px;
+        font-size: 1.8rem;
+        cursor: pointer;
+        color: var(--text-primary);
+        transition: 0.3s;
+      }
+
+      .close-menu:hover {
+        color: var(--link-color);
+        transform: rotate(90deg);
+      }
+
+      /* Profile Section */
+      .profile-img {
+        width: 280px;
+        height: 380px;
+        border-radius: 15px;
+        object-fit: cover;
+        border: 4px solid var(--link-color);
+        box-shadow: 0 10px 30px rgba(0, 102, 204, 0.15);
+        transition: all 0.3s;
+      }
+
+      .profile-img:hover {
+        transform: scale(1.05) rotateZ(1deg);
+        box-shadow: 0 15px 40px rgba(0, 102, 204, 0.25);
+      }
+
+      /* About Container */
+      .about-container {
+        display: flex;
+        align-items: flex-start;
+        gap: 50px;
+        margin-bottom: 50px;
+        padding-bottom: 30px;
+      }
+
+      .about-info {
+        width: 70%;
+      }
+
+      .about-img {
+        width: 30%;
+        text-align: center;
+      }
+
+      /* Section Titles */
+      .section-title {
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        border-bottom: 3px solid var(--link-color);
+        padding-bottom: 12px;
+        margin-bottom: 28px;
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .section-title i {
+        color: var(--link-color);
+        font-size: 1.8rem;
+      }
+
+      /* PhD Banner */
+      .phd-banner {
+        background: linear-gradient(135deg, #0066cc 0%, #0052a3 100%);
+        color: #fff;
+        padding: 30px;
+        border-radius: 12px;
+        margin: 35px 0;
+        box-shadow: 0 8px 25px rgba(0, 102, 204, 0.2);
+        border-left: 6px solid #ffb81c;
+      }
+
+      .phd-banner h3 {
+        color: #fff;
+        margin-bottom: 15px;
+        font-weight: 700;
+        font-size: 1.4rem;
+      }
+
+      .phd-banner p {
+        font-size: 1.05rem;
+        line-height: 1.8;
+        margin: 0;
+      }
+
+      /* Research Interest Cards */
+      .research-card {
+        background: var(--bg-secondary);
+        border: 2px solid var(--border-color);
+        border-radius: 12px;
+        padding: 25px;
+        text-align: center;
+        height: 100%;
+        transition: all 0.3s ease;
+      }
+
+      .research-card:hover {
+        transform: translateY(-8px);
+        border-color: var(--link-color);
+        box-shadow: 0 12px 30px rgba(0, 102, 204, 0.15);
+      }
+
+      .research-card i {
+        font-size: 2.5rem;
+        margin-bottom: 15px;
+        display: block;
+        transition: 0.3s;
+      }
+
+      .research-card:hover i {
+        transform: scale(1.15) rotateZ(10deg);
+      }
+
+      .research-card h5 {
+        font-weight: 700;
+        margin-bottom: 10px;
+        color: var(--text-primary);
+      }
+
+      .research-card p {
+        font-size: 0.95rem;
+        color: var(--text-secondary);
+        margin: 0;
+        line-height: 1.6;
+      }
+
+      .research-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        margin-bottom: 50px;
+      }
+
+      /* General Card Styles */
+      .card {
+        border: 1px solid var(--border-color) !important;
+        background: var(--bg-secondary);
+        border-radius: 10px;
+        transition: all 0.3s ease;
+      }
+
+      .card:hover {
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        border-color: var(--link-color);
+      }
+
+      .card-body {
+        padding: 20px;
+      }
+
+      /* Timeline Cards */
+      .timeline-card {
+        border-left: 4px solid var(--link-color);
+        padding-left: 20px;
+        margin-bottom: 20px;
+        transition: all 0.3s;
+      }
+
+      .timeline-card:hover {
+        border-left-color: var(--success-color);
+        padding-left: 25px;
+      }
+
+      .timeline-card h5 {
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 5px;
+      }
+
+      .timeline-card .position {
+        color: var(--link-color);
+        font-weight: 600;
+        font-size: 0.95rem;
+        margin-bottom: 8px;
+      }
+
+      .timeline-card .duration {
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+        margin-bottom: 10px;
+      }
+
+      /* Project Cards */
+      .project-card {
+        background: var(--bg-secondary);
+        border: 2px solid var(--border-color);
+        border-radius: 10px;
+        padding: 20px;
+        transition: all 0.3s ease;
+      }
+
+      .project-card:hover {
+        transform: translateY(-5px);
+        border-color: var(--warning-color);
+        box-shadow: 0 10px 25px rgba(255, 193, 7, 0.1);
+      }
+
+      .project-card h6 {
+        font-weight: 700;
+        margin-bottom: 10px;
+        color: var(--text-primary);
+      }
+
+      .project-card .project-agency {
+        font-size: 0.9rem;
+        color: var(--warning-color);
+        font-weight: 600;
+        margin-bottom: 8px;
+      }
+
+      .project-card .project-role {
+        display: inline-block;
+        background: var(--warning-color);
+        color: #333;
+        padding: 3px 10px;
+        border-radius: 15px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        margin-bottom: 12px;
+      }
+
+      /* Awards/Achievements */
+      .achievement-item {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 20px;
+        padding: 15px;
+        background: var(--bg-secondary);
+        border-radius: 8px;
+        border-left: 4px solid var(--link-color);
+        transition: all 0.3s;
+      }
+
+      .achievement-item:hover {
+        border-left-color: var(--success-color);
+        transform: translateX(5px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      }
+
+      .achievement-icon {
+        font-size: 1.8rem;
+        flex-shrink: 0;
+      }
+
+      .achievement-content h6 {
+        font-weight: 700;
+        margin-bottom: 3px;
+        color: var(--text-primary);
+      }
+
+      .achievement-content p {
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+        margin: 0;
+      }
+
+      /* Publication Styles */
+      .publication {
+        background: var(--bg-secondary);
+        border: 2px solid var(--border-color);
+        border-radius: 12px;
+        padding: 22px;
+        margin-bottom: 22px;
+        transition: all 0.3s ease;
+      }
+
+      .publication:hover {
+        transform: translateX(5px);
+        border-color: var(--link-color);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+      }
+
+      .pub-badge {
+        background: var(--badge-bg);
+        color: #fff;
+        font-size: 0.85rem;
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-weight: 600;
+        display: inline-block;
+        margin-bottom: 10px;
+      }
+
+      .pub-title {
+        font-weight: 700;
+        font-size: 1.15rem;
+        margin: 12px 0;
+        color: var(--text-primary);
+      }
+
+      .pub-metadata {
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+        margin-bottom: 12px;
+        font-style: italic;
+      }
+
+      .buttons-area {
+        margin-top: 12px;
+      }
+
+      .buttons-area button {
+        margin-right: 8px;
+        margin-bottom: 8px;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        padding: 6px 16px;
+        font-weight: 500;
+        transition: all 0.3s;
+      }
+
+      .buttons-area button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Details Section */
+      .details {
+        display: none;
+        margin-top: 15px;
+        font-size: 0.95rem;
+        color: var(--text-secondary);
+        border-top: 2px dashed var(--border-color);
+        padding-top: 15px;
+        animation: slideDown 0.3s ease;
+      }
+
+      @keyframes slideDown {
+        from {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .methodology-container {
+        display: flex;
+        gap: 20px;
+        align-items: flex-start;
+        margin-top: 15px;
+      }
+
+      .methodology-image {
+        flex: 0 0 35%;
+      }
+
+      .methodology-image img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        border: 2px solid var(--border-color);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .methodology-text {
+        flex: 0 0 65%;
+      }
+
+      .methodology-label {
+        font-weight: 700;
+        color: var(--link-color);
+        font-size: 0.95rem;
+        display: block;
+        margin-bottom: 8px;
+      }
+
+      /* Badges and Pills */
+      .badge {
+        font-weight: 600;
+        padding: 0.5rem 0.9rem;
+        font-size: 0.85rem;
+        border-radius: 20px;
+        margin: 2px;
+      }
+
+      /* Footer */
+      footer {
+        margin-top: 60px;
+        padding: 40px 0;
+        border-top: 2px solid var(--border-color);
+        color: var(--text-secondary);
+        background: var(--bg-secondary);
+        border-radius: 15px 15px 0 0;
+      }
+
+      footer h5 {
+        color: var(--text-primary);
+        font-weight: 700;
+        margin-bottom: 15px;
+      }
+
+      footer a {
+        color: var(--link-color);
+        text-decoration: none;
+        transition: 0.3s;
+        display: block;
+        margin-bottom: 8px;
+        font-size: 0.95rem;
+      }
+
+      footer a:hover {
+        color: var(--link-color);
+        padding-left: 5px;
+      }
+
+      footer .social-link {
+        display: inline-block;
+        margin-right: 15px;
+        font-size: 1.2rem;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .navbar-custom a.desktop {
+          display: none;
+        }
+
+        .three-dot {
+          display: block;
+          cursor: pointer;
+          font-size: 1.5rem;
+          margin-left: 10px;
+          color: var(--text-primary);
+        }
+
+        .about-container {
+          flex-direction: column;
+          gap: 30px;
+        }
+
+        .about-info,
+        .about-img {
+          width: 100% !important;
+          text-align: center;
+        }
+
+        .methodology-container {
+          flex-direction: column;
+        }
+
+        .methodology-image,
+        .methodology-text {
+          flex: 0 0 100% !important;
+        }
+
+        body {
+          padding-left: 15px;
+          padding-right: 15px;
+          padding-top: 80px;
+        }
+
+        .section-title {
+          font-size: 1.3rem;
+        }
+      }
+
+      @media (min-width: 769px) {
+        .three-dot {
+          display: none;
+        }
+
+        .mobile-menu {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <div
+      class="navbar-custom d-flex align-items-center justify-content-between px-4 py-3"
+    >
+      <!-- CHANGE THIS: Update your name in the navbar -->
+      <div class="fw-bold" style="font-size: 1.1rem; color: var(--link-color)">
+        <i class="fas fa-graduation-cap me-2"></i>Sakif Naieb Raiyan
+      </div>
+      <div class="d-flex align-items-center">
+        <a href="#about" class="desktop">About</a>
+        <a href="#education" class="desktop">Education</a>
+        <a href="#experience" class="desktop">Projects</a>
+        <a href="#projects" class="desktop">Research</a>
+        <a href="#awards" class="desktop">Awards</a>
+        <a href="#publications" class="desktop">Publications</a>
+        <i
+          class="fas fa-moon ms-4"
+          id="theme-icon"
+          style="cursor: pointer; font-size: 1.1rem"
+          onclick="toggleTheme()"
+        ></i>
+        <span class="three-dot"><i class="fas fa-ellipsis-v"></i></span>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+      <span class="close-menu" onclick="mobileMenu.classList.remove('show')"
+        >&times;</span
+      >
+      <a href="#about">About</a>
+      <a href="#interests">Research Interests</a>
+      <a href="#education">Education</a>
+      <a href="#experience">Projects</a>
+      <a href="#projects">Research</a>
+      <a href="#awards">Awards & Achievements</a>
+      <a href="#publications">Publications</a>
+    </div>
+
+    <!-- Header / About Section -->
+    <div class="about-container" id="about">
+      <div class="about-info">
+        <h1 class="fw-bold mb-2" style="font-size: 2.5rem">
+          Sakif Naieb Raiyan
+        </h1>
+        <h3 class="text-primary fw-bold mb-3">Aspiring Undergraduate Researcher</h3>
+        <p class="fst-italic text-secondary mb-4" style="font-size: 1.1rem">
+          "Veni, Vidi, Vici" - I came, I saw, I conquered.
+        </p>
+
+        <div class="d-flex flex-column gap-3 mb-5">
+          <div>
+            <i class="fas fa-graduation-cap me-3 text-primary"></i>
+            <strong>Junior Year</strong>, Department of CSE, Bangladesh University of Engineering and Technology
+          </div>
+          <div>
+            <i class="fas fa-briefcase me-3 text-primary"></i>
+            <strong>General Secretary</strong>, IEEE Computer Society BUET Student Branch Chapter
+            
+          </div>
+          <div>
+            <i class="fas fa-envelope me-3 text-primary"></i>
+            <a
+              href="mailto:sakif.raiyan128@gmail.com"
+              style="color: var(--link-color); text-decoration: none"
+              >sakif.raiyan128@gmail.com</a
+            >
+          </div>
+          <div>
+            <i class="fas fa-phone me-3 text-primary"></i> +880 1715 097720
+          </div>
+          <div>
+            <i class="fas fa-map-marker-alt me-3 text-primary"></i> Mirpur,
+            Dhaka, Bangladesh
+          </div>
+        </div>
+
+        <div class="d-flex gap-2 mb-5 flex-wrap">
+          <a
+            href="https://www.linkedin.com/in/sakif-naieb-raiyan"
+            target="_blank"
+            class="btn btn-outline-primary btn-sm rounded-pill px-4"
+          >
+            <i class="fab fa-linkedin me-2"></i> LinkedIn
+          </a>
+          <a
+            href="https://github.com/Fanboyingeneral"
+            target="_blank"
+            class="btn btn-outline-dark btn-sm rounded-pill px-4"
+          >
+            <i class="fab fa-github me-2"></i> GitHub
+          </a>
+          <!-- <a
+            href="https://scholar.google.com/citations?user=ofEJXHQAAAAJ"
+            target="_blank"
+            class="btn btn-outline-info btn-sm rounded-pill px-4"
+          >
+            <i class="fas fa-graduation-cap me-2"></i> Google Scholar
+          </a> -->
+        </div>
+        <!-- <div
+          class="mt-4 p-3"
+          style="
+            background: var(--bg-secondary);
+            border-radius: 10px;
+            border-left: 4px solid var(--link-color);
+          "
+        >
+          <h6 class="fw-bold mb-2">
+            <i class="fas fa-bullseye me-2"></i>Career Objective
+          </h6>
+          <p class="mb-0" style="font-size: 0.95rem">
+            My research is focused on
+            <strong>Large Language Models (LLMs)</strong>,
+            <strong>Multimodal Large Language Models (MLLMs)</strong>,
+            <strong>Mathematical Reasoning</strong>, and general
+            <strong>Artificial Intelligence (AI)</strong> to solve complex
+            problems and advance the field. In my teaching, I want to help
+            students gain the knowledge and skills to use computational
+            techniques for solving real-world problems with creativity and
+            integrity.
+          </p>
+        </div> -->
+      </div> 
+
+      <div class="about-img">
+        <img
+          src="my_profile_photo_2.jpg"
+          class="profile-img"
+          alt="Sakif Naieb Raiyan"
+        />
+
+      </div>
+    </div>
+
+
+
+    <!-- Education -->
+    <h2 class="section-title" id="education">
+      <i class="fas fa-graduation-cap"></i> Education
+    </h2>
+    <div class="card mb-4">
+      <div class="card-body">
+        <div class="row mb-3 pb-3 border-bottom">
+          <div class="col-md-8">
+            <h5 class="fw-bold mb-1" style="color: var(--text-primary);">
+              Bachelor of Science in Computer Science & Engineering
+            </h5>
+            <p class="mb-1" style="color: var(--text-primary);">
+              <strong>Bangladesh University of Engineering and Technology</strong>, Dhaka,
+              Bangladesh
+            </p>
+          </div>
+          <div class="col-md-4 text-md-end">
+            <span class="badge bg-info">CGPA: 3.99/4.00</span>
+            <p class="text-secondary small mt-2">3rd year, 2nd semester</p>
+          </div>
+        </div>
+        <div class="row mb-3 pb-3 border-bottom">
+          <div class="col-md-8">
+            <h5 class="fw-bold mb-1" style="color: var(--text-primary);">Higher Secondary Certificate (HSC)</h5>
+            <p class="mb-0" style="color: var(--text-primary);"><strong>Notre Dame College</strong></p>
+            <p class="small fw-bold mt-1" style="color: #28a745;"><i class="fas fa-trophy me-1"></i>Ranked 3rd among 2,095 students</p>
+          </div>
+          <div class="col-md-4 text-md-end">
+            <span class="badge bg-secondary">GPA: 5.00/5.00</span>
+            <p class="small fw-bold mt-2" style="color: var(--link-color);"><i class="fas fa-medal me-1"></i>Board Scholarship</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-8">
+            <h5 class="fw-bold mb-1" style="color: var(--text-primary);">Secondary School Certificate (SSC)</h5>
+            <p class="mb-0" style="color: var(--text-primary);"><strong>St Joseph Higher Secondary School</strong></p>
+            <p class="small fw-bold mt-1" style="color: #ffc107;"><i class="fas fa-award me-1"></i>Nasr Mainuddin Scholarship (Full Coverage)</p>
+          </div>
+          <div class="col-md-4 text-md-end">
+            <span class="badge bg-secondary">GPA: 5.00/5.00</span>
+            <p class="small fw-bold mt-2" style="color: var(--link-color);"><i class="fas fa-medal me-1"></i>Board Scholarship</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+        <!-- Research Interests -->
+    <h3 id="research" class="section-title">
+      <i class="fas fa-flask"></i>Research Interests
+    </h3>
+    <div class="research-grid">
+      <div class="research-card">
+        <i class="fas fa-robot text-primary"></i>
+        <h5>Large Language Models</h5>
+        <p>LLM architectures, fine-tuning, and efficient inference techniques</p>
+      </div>
+      <div class="research-card">
+        <i class="fas fa-images text-info"></i>
+        <h5>Multimodal Learning</h5>
+        <p>Vision-Language Models and cross-modal representation learning</p>
+      </div>
+      <div class="research-card">
+        <i class="fas fa-compress text-success"></i>
+        <h5>Efficient Deep Learning</h5>
+        <p>Model compression, quantization, and optimization techniques</p>
+      </div>
+      <div class="research-card">
+        <i class="fas fa-cube text-warning"></i>
+        <h5>Transformer Architectures</h5>
+        <p>Advanced transformer design and architectural innovations</p>
+      </div>
+      <div class="research-card">
+        <i class="fas fa-language text-danger"></i>
+        <h5>Natural Language Processing</h5>
+        <p>NLP tasks, text understanding, and semantic analysis</p>
+      </div>
+    </div>
+
+
+    <!-- Funded Research Projects -->
+    <h2 class="section-title" id="projects">
+      <i class="fas fa-hand-holding-dollar"></i> Funded Research Projects
+    </h2>
+    <div class="row g-4 mb-5">
+    
+      <div class="col-md-6">
+        <div class="project-card">
+          <div class="project-role">
+            <i class="fas fa-users me-1"></i>Co-Principal Investigator
+          </div>
+          <h6>
+            <i class="fas fa-project-diagram me-2 text-warning"></i
+            >BanglaHateCorpus: A Large-Scale Bangla Benchmark for Hate Speech
+            Classification and a Transformer-Based Deep Learning Method
+          </h6>
+          <div class="project-agency">
+            Information and Communication Technology Division, Government of
+            Bangladesh | 2023-2024
+          </div>
+          <p class="text-secondary small mb-0">
+            <strong>Amount:</strong> BDT 330,000 | Development of a
+            comprehensive Bangla hate speech detection corpus with
+            transformer-based deep learning methodology.
+          </p>
+        </div>
+      </div>
+    </div>
+
+        <!-- Projects and Experience -->
+    <h2 class="section-title" id="experience">
+      <i class="fas fa-briefcase"></i> Projects & Experience
+    </h2>
+    <div class="mb-5">
+      <div class="timeline-card card border-0 shadow-sm">
+        <div class="card-body">
+          <h5>
+            <i class="fas fa-briefcase me-2 text-primary"></i>Web Crawling Tool Development
+          </h5>
+          <div class="position">Paid Internship Project</div>
+          <div class="duration">
+            <i class="fas fa-calendar-alt me-2"></i>November 2024 | <a href="https://github.com/Fanboyingeneral/WebCrawler-Main" target="_blank" style="color: var(--link-color); text-decoration: none;"><i class="fab fa-github me-1"></i>View on GitHub</a>
+          </div>
+          <p class="text-secondary mb-3">
+            Developed a scalable web crawling tool for efficient, on-demand data extraction from websites at large scale.
+          </p>
+          <p class="text-secondary small mb-0">
+            <strong>Tech Stack & Tools:</strong>
+          </p>
+          <ul class="text-secondary mb-0 small">
+            <li><strong>Backend Framework:</strong> Node.js</li>
+            <li><strong>Frontend Framework:</strong> React.js</li>
+            <li><strong>Database:</strong> MongoDB</li>
+            <li>Docker, Kubernetes</li>
+            <li>Selenium, Scrapy, Crawl4ai</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-card card border-0 shadow-sm">
+        <div class="card-body">
+          <h5>
+            <i class="fas fa-globe me-2 text-primary"></i>On the Road
+          </h5>
+          <div class="position">Web Application Project</div>
+          <div class="duration">
+            <i class="fas fa-calendar-alt me-2"></i>March 2024 | <a href="https://github.com/Minamotooo/On-the-road" target="_blank" style="color: var(--link-color); text-decoration: none;"><i class="fab fa-github me-1"></i>View on GitHub</a>
+          </div>
+          <p class="text-secondary mb-3">
+            A comprehensive web app that offers an all-in-one solution for tour planning, route optimization, itinerary management, accommodation guidance, and travel guides.
+          </p>
+          <p class="text-secondary small mb-0">
+            <strong>Tech Stack:</strong>
+          </p>
+          <ul class="text-secondary mb-0 small">
+            <li><strong>Backend Framework:</strong> Node.js, Express</li>
+            <li><strong>Frontend Framework:</strong> React.js</li>
+            <li><strong>Database:</strong> PostgreSQL</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-card card border-0 shadow-sm">
+        <div class="card-body">
+          <h5>
+            <i class="fas fa-cube me-2 text-primary"></i>Scramble
+          </h5>
+          <div class="position">Hardware & Mobile Application Project</div>
+          <div class="duration">
+            <i class="fas fa-calendar-alt me-2"></i>July 2025 | <a href="https://youtu.be/4RdSLmTVIiQ?si=5I85jvNCKvXSj1fC" target="_blank" style="color: var(--link-color); text-decoration: none;"><i class="fab fa-youtube me-1"></i>Project Demonstration</a>
+          </div>
+          <p class="text-secondary mb-3">
+            Developed a fully automated Rubik's Cube Solver capable of generating solutions in a maximum of 20 moves. Built an Android app from scratch featuring color detection, Bluetooth communication with the hardware, and remote server integration for advanced solver algorithms.
+          </p>
+          <p class="text-secondary small mb-0">
+            <strong>Technologies & Components:</strong>
+          </p>
+          <ul class="text-secondary mb-0 small">
+            <li><strong>Microcontroller:</strong> ATMega32</li>
+            <li><strong>Motors:</strong> SG90 Servo Motors</li>
+            <li><strong>Wireless Module:</strong> HC-05 Bluetooth Module</li>
+            <li><strong>Mobile App Framework:</strong> Kotlin</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-card card border-0 shadow-sm">
+        <div class="card-body">
+          <h5>
+            <i class="fas fa-utensils me-2 text-primary"></i>PoodFanda
+          </h5>
+          <div class="position">Desktop Application Project</div>
+          <div class="duration">
+            <i class="fas fa-calendar-alt me-2"></i>Course Project | <a href="https://github.com/Fanboyingeneral/CSE-108-Java-Term-Project-PoodFanda" target="_blank" style="color: var(--link-color); text-decoration: none;"><i class="fab fa-github me-1"></i>View on GitHub</a>
+          </div>
+          <p class="text-secondary mb-3">
+            Engineered a multi-threaded desktop application enabling restaurants and users to dynamically buy and sell food through dual interfaces. Implemented socket programming for real-time bidirectional communication, ensuring instantaneous updates across both restaurant and client platforms with low-latency data synchronization.
+          </p>
+          <p class="text-secondary small mb-0">
+            <strong>Tech Stack:</strong>
+          </p>
+          <ul class="text-secondary mb-0 small">
+            <li><strong>Language:</strong> Java</li>
+            <li><strong>Architecture:</strong> Multi-threaded Client-Server Model</li>
+            <li><strong>Networking:</strong> Socket Programming</li>
+            <li><strong>GUI Framework:</strong> Java Swing</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Publications -->
+    <h2 class="section-title" id="publications">
+      <i class="fas fa-book-open"></i> Publications & Research Work
+    </h2>
+
+    <div class="d-flex gap-4 mb-4 flex-wrap">
+      <label class="form-check-label">
+        <input
+          type="radio"
+          name="filter"
+          checked
+          onclick="filterPubs('all')"
+          class="form-check-input"
+        />
+        All Publications
+      </label>
+      <label class="form-check-label">
+        <input
+          type="radio"
+          name="filter"
+          onclick="filterPubs('conf')"
+          class="form-check-input"
+        />
+        Conference Papers
+      </label>
+      <label class="form-check-label">
+        <input
+          type="radio"
+          name="filter"
+          onclick="filterPubs('journal')"
+          class="form-check-input"
+        />
+        Journal Articles
+      </label>
+      <label class="form-check-label">
+        <input
+          type="radio"
+          name="filter"
+          onclick="filterPubs('poster')"
+          class="form-check-input"
+        />
+        Research Posters
+      </label>
+    </div>
+
+    <style>
+      .details {
+        display: none;
+        margin-top: 15px;
+        font-size: 0.95rem;
+        color: var(--text-secondary);
+        border-top: 2px dashed var(--border-color);
+        padding-top: 12px;
+      }
+      .buttons-area button {
+        margin-right: 6px;
+        margin-bottom: 6px;
+      }
+    </style>
+
+    <script>
+      function showDetails(btn, type) {
+        const pub = btn.closest(".publication");
+        const section = pub.querySelector(".details." + type);
+        const isVisible = section.style.display === "block";
+        pub
+          .querySelectorAll(".details")
+          .forEach((d) => (d.style.display = "none"));
+        if (!isVisible) section.style.display = "block";
+      }
+    </script>
+
+    <!-- Conference Publications -->
+    
+    <!-- Journal Publications -->
+    
+    <div class="publication journal">
+      <span class="pub-badge bg-warning text-dark">PLOS ONE</span>
+      <span class="pub-badge bg-secondary">Under Review</span>
+      <div class="pub-title">
+        BanglaHateCorpus: A large-scale Bangla benchmark for hate speech
+        classification and a transformer-based deep learning method.
+      </div>
+      <div class="pub-metadata">Journal Article | Under Review</div>
+      <div class="buttons-area">
+        <button
+          class="btn btn-sm btn-outline-primary"
+          onclick="showDetails(this,'abs')"
+        >
+          <i class="fas fa-align-left me-1"></i>Abstract
+        </button>
+        <button
+          class="btn btn-sm btn-outline-primary"
+          onclick="showDetails(this,'bib')"
+        >
+          <i class="fas fa-quote-right me-1"></i>Citation
+        </button>
+        <button
+          class="btn btn-sm btn-outline-primary"
+          onclick="showDetails(this,'paper')"
+        >
+          <i class="fas fa-file-pdf me-1"></i>Paper
+        </button>
+        <button
+          class="btn btn-sm btn-outline-info"
+          onclick="showDetails(this,'methodology')"
+        >
+          <i class="fas fa-project-diagram me-1"></i>Methodology
+        </button>
+      </div>
+      <div class="details abs">Coming soon!</div>
+      <div class="details bib">Coming soon!</div>
+      <div class="details paper">Coming soon!</div>
+      <div class="details methodology">
+        <div class="methodology-container">
+          <div class="methodology-image">
+            <img
+              src="https://placehold.co/300x200?text=Corpus"
+              alt="Methodology"
+            />
+          </div>
+          <div class="methodology-text">
+            <span class="methodology-label"
+              ><i class="fas fa-microscope me-2"></i>Research Methodology:</span
+            >
+            <p>
+              Large-scale corpus of 50,000+ annotated Bangla samples for hate
+              speech detection, validated through inter-annotator agreement
+              protocols achieving κ > 0.85.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Research Posters -->
+    <div class="publication poster">
+      <span class="pub-badge bg-danger"><i class="fas fa-trophy me-1"></i>2nd Runners Up - BUET CSE Fest 2024</span>
+      <span class="pub-badge bg-warning text-dark"><i class="fas fa-star me-1"></i>Finalist - NSysS 2024</span>
+      <span class="pub-badge bg-secondary">2024</span>
+      <div class="pub-title">
+        Real-Time Rumor Verification System using AI-Powered Video Surveillance Based Threat Detection
+      </div>
+      <div class="pub-metadata">BUET CSE Fest 2024 | 11th NSysS 2024, Khulna, Bangladesh (Dec 19-21)</div>
+      <div class="buttons-area">
+        <button
+          class="btn btn-sm btn-outline-primary"
+          onclick="showDetails(this,'abs')"
+        >
+          <i class="fas fa-align-left me-1"></i>Abstract
+        </button>
+        <button
+          class="btn btn-sm btn-outline-primary"
+          onclick="window.open('Rumor_Verification_Poster.pdf', '_blank')"
+        >
+          <i class="fas fa-file-pdf me-1"></i>BUET Version
+        </button>
+        <button
+          class="btn btn-sm btn-outline-primary"
+          onclick="window.open('Rumor_Verification_Poster_Revised.pdf', '_blank')"
+        >
+          <i class="fas fa-file-pdf me-1"></i>NSysS Version
+        </button>
+        <button
+          class="btn btn-sm btn-outline-info"
+          onclick="showDetails(this,'methodology')"
+        >
+          <i class="fas fa-project-diagram me-1"></i>Methodology
+        </button>
+      </div>
+      <div class="details abs">
+        <p>
+          Our country recently faced a mass uprising, during which the regime effectively used rumor propaganda to suppress dissent by herding violence, ambushes, and unrest among citizens. This rapid spread of misinformation highlighted the urgent need for a system capable of detecting rumors in real time. 
+        </p>
+        <p>
+          In response, we developed a solution that combines social media text analysis with real-time surveillance footage from government CCTV systems. This integrated approach allows us to detect, categorize, and validate potential threats swiftly. Even in today's turbulent political landscape, rumors continue to fuel chaos, making our system crucial for mitigating the spread of misinformation.
+        </p>
+        <p style="margin-top: 12px; font-style: italic; color: var(--link-color);">
+          <strong>Recognition:</strong> 2nd Runners Up at BUET CSE Fest 2024 | Finalist Student Poster at 11th NSysS 2024
+        </p>
+      </div>
+      <div class="details methodology">
+        <div class="methodology-container">
+          <div class="methodology-image">
+            <img src="Rumor_Verification_Poster_Methodology.png" alt="Rumor Verification System Methodology" style="max-height: 400px; object-fit: cover;" />
+          </div>
+          <div class="methodology-text">
+            <span class="methodology-label"
+              ><i class="fas fa-microscope me-2"></i>System Overview:</span
+            >
+            <p>
+              <strong>Objectives:</strong> Monitor social media posts for potential threats and categorize them into 16 events, analyze real-time CCTV footage using data fusion approach, cross-reference results from social media analysis and CCTV footage, assign confidence scores to validate authenticity, and enhance public safety through real-time incident validation.
+            </p>
+            <p style="margin-top: 12px;">
+              <strong>Methodology:</strong> The system continuously monitors social media posts prioritized by engagement rate and account confidence scores. Events are classified into 16 predefined categories (Abuse, Burglary, Explosion, Shooting, Fighting, Shoplifting, Road Accidents, Arson, Robbery, Stealing, Assault, Vandalism, Police Brutality, Riot/Protests, Road Blockade, and Weapon Display). Detected threats are verified against CCTV footage using cross-modal fusion based on location and time, providing a 100% confidence score for validated threats.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Awards & Achievements -->
+    <h2 class="section-title" id="awards">
+      <i class="fas fa-trophy"></i> Awards & Achievements
+    </h2>
+    <div class="mb-5">
+            <div style="margin-top: 30px; margin-bottom: 20px; padding-top: 20px; border-top: 2px solid var(--border-color);">
+        <h5 style="font-weight: 700; color: var(--text-primary); display: flex; align-items: center; gap: 10px;">
+          <i class="fas fa-medal" style="color: var(--link-color);"></i> University Awards
+        </h5>
+      </div>
+
+      <!-- University Awards -->
+      <div class="achievement-item">
+        <div class="achievement-icon" style="color: #4d9fff;">
+          <i class="fas fa-graduation-cap"></i>
+        </div>
+        <div class="achievement-content">
+          <h6>Dean's List Award</h6>
+          <p><strong>Bangladesh University of Engineering and Technology (BUET)</strong> | 2023-2024 (2 times)</p>
+        </div>
+      </div>
+
+      <div class="achievement-item">
+        <div class="achievement-icon" style="color: #ffc107;">
+          <i class="fas fa-star"></i>
+        </div>
+        <div class="achievement-content">
+          <h6>University Merit Award</h6>
+          <p><strong>Bangladesh University of Engineering and Technology (BUET)</strong> | 2023-2024 (3 times)</p>
+        </div>
+      </div>
+
+      <!-- Leadership -->
+      <div class="achievement-item">
+        <div class="achievement-icon" style="color: #28a745;">
+          <i class="fas fa-people-arrows"></i>
+        </div>
+        <div class="achievement-content">
+          <h6>General Secretary</h6>
+          <p><strong>IEEE Computer Society BUET Student Branch Chapter</strong> | March 2025</p>
+        </div>
+      </div>
+
+
+
+      <!-- Competition Awards -->
+      <div class="achievement-item">
+        <div class="achievement-icon" style="color: #ff6b6b;">
+          <i class="fas fa-ribbon"></i>
+        </div>
+        <div class="achievement-content">
+          <h6>Second Runners Up, Research Poster Presentation</h6>
+          <p><strong>CSE FEST 2024, BUET</strong> | October 2024</p>
+        </div>
+      </div>
+
+      <div class="achievement-item">
+        <div class="achievement-icon" style="color: #ff6b6b;">
+          <i class="fas fa-bookmark"></i>
+        </div>
+        <div class="achievement-content">
+          <h6>Finalist, Students' Research Poster Session</h6>
+          <p><strong>11th International Conference on Networking, Systems, and Security</strong> | December 2024</p>
+        </div>
+      </div>
+
+      <div class="achievement-item">
+        <div class="achievement-icon" style="color: #17a2b8;">
+          <i class="fas fa-code"></i>
+        </div>
+        <div class="achievement-content">
+          <h6>Finalist (Top 10), Hackathon</h6>
+          <p><strong>CSE FEST 2024, BUET</strong> | October 2024</p>
+        </div>
+      </div>
+
+
+
+      <!-- High School & Competition Awards Section Header -->
+      <div style="margin-top: 30px; margin-bottom: 20px; padding-top: 20px; border-top: 2px solid var(--border-color);">
+        <h5 style="font-weight: 700; color: var(--text-primary); display: flex; align-items: center; gap: 10px;">
+          <i class="fas fa-medal" style="color: var(--link-color);"></i> High School & Competition Awards
+        </h5>
+      </div>
+
+            <div class="achievement-item">
+        <div class="achievement-icon" style="color: #ffc107;">
+          <i class="fas fa-book"></i>
+        </div>
+        <div class="achievement-content">
+          <h6>Academic Excellence Award (3rd Place), Perfect Attendance</h6>
+          <p><strong>Notre Dame College</strong> | 2021-2022 (2 times)</p>
+        </div>
+      </div>
+
+      <div class="achievement-item">
+        <div class="achievement-icon" style="color: #ff6b6b;">
+          <i class="fas fa-atom"></i>
+        </div>
+        <div class="achievement-content">
+          <h6>National Winner and Regional Winner</h6>
+          <p><strong>Bangladesh Physics Olympiad</strong> | 2018-2019</p>
+        </div>
+      </div>
+
+      <!-- High School Awards -->
+      <div class="achievement-item">
+        <div class="achievement-icon" style="color: #ffc107;">
+          <i class="fas fa-medal"></i>
+        </div>
+        <div class="achievement-content">
+          <h6>High School Champion, Best Speaker</h6>
+          <p><strong>National Debate Festival</strong> - Prothom Alo and Josephites Debating Club | October 2017</p>
+        </div>
+      </div>
+
+            <div class="achievement-item">
+        <div class="achievement-icon" style="color: #28a745;">
+          <i class="fas fa-shield-alt"></i>
+        </div>
+        <div class="achievement-content">
+          <h6>Prefect of Discipline</h6>
+          <p><strong>St. Joseph Higher Secondary School</strong> | 2017-2018</p>
+        </div>
+      </div>
+
+            <div class="achievement-item">
+        <div class="achievement-icon" style="color: #17a2b8;">
+          <i class="fas fa-pen-fancy"></i>
+        </div>
+        <div class="achievement-content">
+          <h6>Joint Secretary</h6>
+          <p><strong>Josephites Language and Reading Club</strong> | 2017-2018</p>
+        </div>
+      </div>
+
+      <div class="achievement-item">
+        <div class="achievement-icon" style="color: #9b59b6;">
+          <i class="fas fa-palette"></i>
+        </div>
+        <div class="achievement-content">
+          <h6>Joint Secretary</h6>
+          <p><strong>Josephites Wall Magazine Committee</strong> | 2017-2018</p>
+        </div>
+      </div>
+
+
+
+      <div class="achievement-item">
+        <div class="achievement-icon" style="color: #ffc107;">
+          <i class="fas fa-piggy-bank"></i>
+        </div>
+        <div class="achievement-content">
+          <h6>Nasr Mainuddin Scholarship (Full Coverage)</h6>
+          <p><strong>St Joseph Old Boys' Foundation</strong> | 2012-2018 (8 years of academic expenses)</p>
+        </div>
+      </div>
+
+      <div class="achievement-item">
+        <div class="achievement-icon" style="color: #28a745;">
+          <i class="fas fa-award"></i>
+        </div>
+        <div class="achievement-content">
+          <h6>3rd Place, Extempore Speech & Short Story Writing</h6>
+          <p><strong>Notre Dame English Club and The Daily Star</strong> | February 2018</p>
+        </div>
+      </div>
+
+      <div class="achievement-item">
+        <div class="achievement-icon" style="color: #4d9fff;">
+          <i class="fas fa-leaf"></i>
+        </div>
+        <div class="achievement-content">
+          <h6>1st Runner Up, Environment Related Projects</h6>
+          <p><strong>Junior Climate Champions - HSBC and The Daily Star</strong> | May 2014</p>
+        </div>
+      </div>
+
+      <div class="achievement-item">
+        <div class="achievement-icon" style="color: #17a2b8;">
+          <i class="fas fa-flask"></i>
+        </div>
+        <div class="achievement-content">
+          <h6>Winner, Science Project and Scrap Book Competitions</h6>
+          <p><strong>Scintilla Science Club</strong> | 2014-2022 (9 times)</p>
+        </div>
+      </div>
+
+
+
+      <!-- School Awards -->
+  
+
+
+
+      <div class="achievement-item">
+        <div class="achievement-icon" style="color: #4d9fff;">
+          <i class="fas fa-certificate"></i>
+        </div>
+        <div class="achievement-content">
+          <h6>Board Scholarship</h6>
+          <p><strong>Government of Bangladesh</strong> - JSC, SSC, HSC </p>
+        </div>
+      </div>
+
+
+      <!-- <div class="achievement-item">
+        <div class="achievement-icon" style="color: #ff6b6b">
+          <i class="fas fa-code"></i>
+        </div>
+        <div class="achievement-content"></div>
+          <h6>Open Source Contributions</h6>
+          <p>Active contributor to AI/ML projects on GitHub</p>
+        </div>
+      </div> -->
+    </div>
+
+   
+    <!-- Footer -->
+    <footer>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-4 mb-4 mb-md-0">
+            <h5>
+              <i class="fas fa-user-circle me-2 text-primary"></i>About Me
+            </h5>
+            <p class="text-secondary">
+              Sakif Naieb Raiyan is a junior at BUET (Bangladesh University of Engineering and Technology) deeply interested in Large Language Models, Multimodal Learning, and Natural Language Processing. Committed to advancing AI solutions through cutting-edge research.
+            </p>
+          </div>
+
+          <div class="col-md-4 mb-4 mb-md-0">
+            <h5><i class="fas fa-handshake me-2 text-primary"></i>Connect</h5>
+            <p class="mb-2">
+              <a
+                href="https://www.linkedin.com/in/sakif-naieb-raiyan"
+                target="_blank"
+                class="social-link"
+                title="LinkedIn"
+              >
+                <i class="fab fa-linkedin"></i>
+              </a>
+              <a
+                href="https://github.com/Fanboyingeneral"
+                target="_blank"
+                class="social-link"
+                title="GitHub"
+              >
+                <i class="fab fa-github"></i>
+              </a>
+              <a
+                href="mailto:sakif.raiyan128@gmail.com"
+                class="social-link"
+                title="Email"
+              >
+                <i class="fas fa-envelope"></i>
+              </a>
+            </p>
+            <p class="text-secondary small">Mirpur, Dhaka, Bangladesh</p>
+          </div>
+
+          <div class="col-md-4">
+            <h5><i class="fas fa-link me-2 text-primary"></i>Quick Links</h5>
+            <a href="#about" class="d-block mb-2">About</a>
+            <a href="#research" class="d-block mb-2">Research</a>
+            <a href="#education" class="d-block mb-2">Education</a>
+            <a href="#publications" class="d-block mb-2">Publications</a>
+          </div>
+        </div>
+
+        <hr class="my-4" style="border-color: var(--border-color)" />
+
+        <div class="text-center text-secondary small">
+          <p class="mb-1">
+            <strong>&copy; 2026 Sakif Naieb Raiyan</strong> | All rights
+            reserved
+          </p>
+          <p class="mb-0">Seeking Research and Internship Opportunities in AI/ML</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      function toggleTheme() {
+        const html = document.documentElement;
+        const icon = document.getElementById("theme-icon");
+        if (html.getAttribute("data-theme") === "dark") {
+          html.setAttribute("data-theme", "light");
+          icon.className = "fas fa-moon";
+        } else {
+          html.setAttribute("data-theme", "dark");
+          icon.className = "fas fa-sun";
+        }
+        localStorage.setItem("theme", html.getAttribute("data-theme"));
+      }
+
+      function filterPubs(type) {
+        document.querySelectorAll(".publication").forEach((pub) => {
+          if (type === "all" || pub.classList.contains(type)) {
+            pub.style.display = "block";
+          } else {
+            pub.style.display = "none";
+          }
+        });
+      }
+
+      const threeDot = document.querySelector(".three-dot");
+      const mobileMenu = document.getElementById("mobileMenu");
+
+      if (threeDot) {
+        threeDot.addEventListener("click", () => {
+          mobileMenu.classList.toggle("show");
+        });
+      }
+
+      // Load theme preference
+      window.addEventListener("load", () => {
+        const savedTheme = localStorage.getItem("theme") || "light";
+        document.documentElement.setAttribute("data-theme", savedTheme);
+        const icon = document.getElementById("theme-icon");
+        icon.className = savedTheme === "dark" ? "fas fa-sun" : "fas fa-moon";
+      });
+    </script>
+  </body>
+</html>
