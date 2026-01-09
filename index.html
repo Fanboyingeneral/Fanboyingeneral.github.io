@@ -714,6 +714,31 @@
         border-color: var(--link-color) !important;
         color: white !important;
       }
+
+      /* LinkedIn button - outline by default, filled on hover */
+      .btn-linkedin {
+        color: #0077B5 !important;
+        border-color: #0077B5 !important;
+        background-color: transparent !important;
+      }
+
+      .btn-linkedin:hover {
+        background-color: #0077B5 !important;
+        border-color: #0077B5 !important;
+        color: white !important;
+      }
+
+      /* GitHub button - better contrast in dark mode */
+      .btn-outline-dark {
+        color: var(--text-primary) !important;
+        border-color: var(--text-primary) !important;
+      }
+
+      .btn-outline-dark:hover {
+        background-color: var(--text-primary) !important;
+        border-color: var(--text-primary) !important;
+        color: var(--bg-primary) !important;
+      }
     </style>
   </head>
   <body>
@@ -805,7 +830,7 @@
           <a
             href="https://www.linkedin.com/in/sakif-naieb-raiyan"
             target="_blank"
-            class="btn btn-outline-primary btn-sm rounded-pill px-4"
+            class="btn btn-linkedin btn-sm rounded-pill px-4"
           >
             <i class="fab fa-linkedin me-2"></i> LinkedIn
           </a>
